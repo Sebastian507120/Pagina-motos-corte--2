@@ -54,18 +54,151 @@ let runNextAuto = setTimeout(() => {
     nextDom.click(); // Avanza automáticamente después de un tiempo
 }, timeAutoNext);
 
-// 📌 Función para alternar la animación del slider
-const slider = document.getElementById("slider");
-function toggleAnimation() {
-    const currentState = window.getComputedStyle(slider).animationPlayState;
-    if (currentState === "running") {
-        slider.style.animationPlayState = "paused";  // Detener la animación
-    } else {
-        slider.style.animationPlayState = "running";  // Reanudar la animación
+
+
+/* Inicio de la edicion para la galeria 3D */
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById("slider");
+    const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+
+    // Objeto con las imágenes de cada segmento
+    const segmentImages = {
+        cafe_racer: Array.from({length: 10}, (_, i) => `img/Segmentos/cafe_racer_${i+1}.jpg`),
+        deportivas: Array.from({length: 10}, (_, i) => `img/Segmentos/deportivas_${i+1}.jpg`),
+        adventure: Array.from({length: 10}, (_, i) => `img/Segmentos/adventure_${i+1}.jpg`),
+        enduro: Array.from({length: 10}, (_, i) => `img/Segmentos/enduro_${i+1}.jpg`),
+        naked: Array.from({length: 10}, (_, i) => `img/Segmentos/naked_${i+1}.jpg`)
+    };
+
+    // Función para crear la galería con transiciones mejoradas
+    function createGallery(segment) {
+        console.log(`Cargando segmento: ${segment}`);
+        
+        // 1. Pausar animación y preparar transición de salida
+        slider.style.animationPlayState = 'paused';
+        const currentItems = Array.from(slider.querySelectorAll('.item'));
+        
+        // Aplicar fade-out solo si hay elementos existentes
+        if (currentItems.length > 0) {
+            currentItems.forEach(item => {
+                item.classList.add('fade-out');
+            });
+
+            // 2. Esperar a que complete la transición de salida (500ms)
+            setTimeout(() => {
+                loadNewImages();
+            }, 500);
+        } else {
+            // Si no hay imágenes existentes (primera carga)
+            loadNewImages();
+        }
+
+        function loadNewImages() {
+            slider.innerHTML = '';
+            
+            const images = segmentImages[segment];
+            if (!images) {
+                console.error(`Segmento no encontrado: ${segment}`);
+                return;
+            }
+            
+            const quantity = images.length;
+            slider.style.setProperty('--quantity', quantity);
+            
+            // 3. Crear nuevos items con animación de entrada
+            images.forEach((imgSrc, index) => {
+                const item = document.createElement('div');
+                item.className = 'item fade-in';
+                item.style.setProperty('--position', index + 1);
+                
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = `${segment.replace('_', ' ')} ${index + 1}`;
+                img.onerror = () => console.error(`Error al cargar: ${imgSrc}`);
+                
+                item.appendChild(img);
+                slider.appendChild(item);
+            });
+
+            // 4. Reanudar animación después de la transición (800ms)
+            setTimeout(() => {
+                slider.querySelectorAll('.item').forEach(item => {
+                    item.classList.remove('fade-in');
+                });
+                slider.style.animationPlayState = 'running';
+            }, 800);
+        }
     }
-}
-// Agrega un evento para pausar/reanudar la animación al hacer clic
-slider.addEventListener("click", toggleAnimation);
+
+    // Función para cerrar el menú con animación
+    function closeDropdown() {
+        const dropdownContent = document.querySelector('.dropdown-content');
+        if (dropdownContent) {
+            dropdownContent.style.opacity = '0';
+            dropdownContent.style.transform = 'translateY(10px) scale(0.95)';
+            setTimeout(() => {
+                dropdownContent.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    // Evento para los links del menú (selección de segmentos)
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const segment = this.getAttribute('data-segment');
+            if (segment && segmentImages[segment]) {
+                createGallery(segment);
+            }
+            closeDropdown();
+        });
+    });
+
+    // Evento para el botón principal (abrir/cerrar menú)
+    document.querySelector('.dropbtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        const dropdownContent = this.nextElementSibling;
+        
+        if (dropdownContent.style.display === 'block') {
+            closeDropdown();
+        } else {
+            dropdownContent.style.display = 'block';
+            setTimeout(() => {
+                dropdownContent.style.opacity = '1';
+                dropdownContent.style.transform = 'translateY(0) scale(1)';
+            }, 10);
+        }
+    });
+
+    // Cerrar menú al hacer clic fuera de él
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            closeDropdown();
+        }
+    });
+
+    // Evitar que se cierre al hacer clic dentro del menú
+    document.querySelector('.dropdown-content').addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    // Inicializar con el primer segmento
+    createGallery('cafe_racer');
+
+    // Evento para pausar/despausar la animación
+    slider.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const currentState = window.getComputedStyle(slider).animationPlayState;
+        slider.style.animationPlayState = currentState === "running" ? "paused" : "running";
+    });
+});
+
+/* Fin de la edicion para la galeria 3D*/
+
 
 // 📌 Función para cambiar el slider
 function showSlider(type) {

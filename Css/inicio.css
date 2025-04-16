@@ -541,6 +541,10 @@ header {
     background-size: 100%;
 }
 
+
+
+
+
 .header-bar img {
     position: relative;
     bottom: 0;
@@ -653,9 +657,72 @@ header {
     }
 }
 
+/*Inicio de los estilos de la galeria 3D*/
+
+/* Estilos para el menú desplegable */
+.dropdown {
+    position: fixed;
+    top: 680px;
+    left: 20px;
+    max-width: 201px;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dropbtn {
+    background-color: #25283B;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.dropbtn:hover {
+    background-color: #3a3f5e;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    bottom: 100%; /* Cambiado de top a bottom */
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px -8px 16px 0px rgba(0,0,0,0.2); /* Sombra ajustada */
+    border-radius: 4px;
+    z-index: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px) scale(0.95);
+    transform-origin: top center;
+    transition: 
+        opacity 0.3s ease, 
+        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.dropdown-content a {
+    color: #25283B;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
 /* 📌 Estilos para el banner */
 .banner {
-    margin-top: 40px;
+    margin-top: 0px;
+    padding-top: 0px;
     width: 100%;
     height: 100vh;
     text-align: center;
@@ -692,8 +759,8 @@ header {
 }
 
 .banner .slider .item img {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     object-fit: cover;
 }
 
@@ -795,6 +862,32 @@ header {
     }
 }
 
+/*mejorar para la galeria y animaciones de la misma*/
+
+/* Transiciones para la galería */
+.banner .slider .item {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.banner .slider .item.fade-out {
+    opacity: 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px) scale(0.8);
+}
+
+.banner .slider .item.fade-in {
+    animation: fadeIn 0.8s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Estilos del menú desplegable */
+.dropdown-content {
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/*Finalizacion del codigo de la galeria 3D*/
 /* 📌 Contenedor de video */
 .video-container {
     margin-top: 60px;

@@ -180,26 +180,40 @@
     <div class="header-bar"></div>
 
     <!-- Galería de imágenes deslizantes -->
-    <div class="banner">
-        <div id="slider" class="slider" style="--quantity: 10">
-            <!-- Imágenes de la galería -->
-            <div class="item" style="--position: 1"><img src="img/BMW R 1250 GS.jpeg" alt="BMW R 1250 GS"></div>
-            <div class="item" style="--position: 2"><img src="img/Ducati-deportiva.jpeg" alt="Ducati Deportiva"></div>
-            <div class="item" style="--position: 3"><img src="img/Gato-moto.jpeg" alt="Gato en moto"></div>
-            <div class="item" style="--position: 4"><img src="img/Kawasaki zh2.jpeg" alt="Kawasaki ZH2"></div>
-            <div class="item" style="--position: 5"><img src="img/triumph 2.0.jpeg" alt="Triumph"></div>
-            <div class="item" style="--position: 6"><img src="img/Yamaha R6.jpeg" alt="Yamaha R6"></div>
-            <div class="item" style="--position: 7"><img src="img/KTM 690.jpeg" alt="KTM 690"></div>
-            <div class="item" style="--position: 8"><img src="img/R1-Rayo-McQueen.jpeg" alt="R1 Rayo McQueen"></div>
-            <div class="item" style="--position: 9"><img src="img/triumph 2.0.jpeg" alt="Triumph"></div>
-            <div class="item" style="--position: 10"><img src="img/Motoperro.jpg" alt="Moto con perro"></div>
-        </div>
-        <!-- Título de la galería -->
-        <div class="content">
-            <h1 data-content="MOTOR-CLUB">MOTOR-CLUB</h1>
-            <div class="model"></div>
+    <div>
+        <!-- Menú desplegable -->
+    <div class="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">
+        <button class="dropbtn">Seleccionar Segmento</button>
+        <div class="dropdown-content">
+            <a href="#" data-segment="cafe_racer">Cafe Racer</a>
+            <a href="#" data-segment="deportivas">Deportivas</a>
+            <a href="#" data-segment="adventure">Adventure</a>
+            <a href="#" data-segment="enduro">Enduro</a>
+            <a href="#" data-segment="naked">Naked</a>
         </div>
     </div>
+        <div class="banner">
+            <div id="slider" class="slider" style="--quantity: 10">
+                <!-- Imágenes de la galería -->
+                <div class="item" style="--position: 1"><img src="img/BMW R 1250 GS.jpeg" alt="BMW R 1250 GS"></div>
+                <div class="item" style="--position: 2"><img src="img/Ducati-deportiva.jpeg" alt="Ducati Deportiva"></div>
+                <div class="item" style="--position: 3"><img src="img/Gato-moto.jpeg" alt="Gato en moto"></div>
+                <div class="item" style="--position: 4"><img src="img/Kawasaki zh2.jpeg" alt="Kawasaki ZH2"></div>
+                <div class="item" style="--position: 5"><img src="img/triumph 2.0.jpeg" alt="Triumph"></div>
+                <div class="item" style="--position: 6"><img src="img/Yamaha R6.jpeg" alt="Yamaha R6"></div>
+                <div class="item" style="--position: 7"><img src="img/KTM 690.jpeg" alt="KTM 690"></div>
+                <div class="item" style="--position: 8"><img src="img/R1-Rayo-McQueen.jpeg" alt="R1 Rayo McQueen"></div>
+                <div class="item" style="--position: 9"><img src="img/triumph 2.0.jpeg" alt="Triumph"></div>
+                <div class="item" style="--position: 10"><img src="img/Motoperro.jpg" alt="Moto con perro"></div>
+            </div>
+            <!-- Título de la galería -->
+            <div class="content">
+                <h1 data-content="MOTOR-CLUB">MOTOR-CLUB</h1>
+                <div class="model"></div>
+            </div>
+        </div>
+    </div>
+    
 
     <!-- Sección de comparativa de motos -->
     <div id="comparativa" class="moto-container">
