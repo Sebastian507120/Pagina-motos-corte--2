@@ -865,6 +865,8 @@ header {
 /*mejorar para la galeria y animaciones de la misma*/
 
 /* Transiciones para la galería */
+/* Transiciones para la galería */
+/* Transiciones para la galería */
 .banner .slider .item {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
@@ -875,17 +877,36 @@ header {
 }
 
 .banner .slider .item.fade-in {
-    animation: fadeIn 0.8s forwards;
+    opacity: 0;
+    filter: blur(10px);
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px) scale(0.7) rotate(10deg) translateY(100px);
+    animation: fadeIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes fadeIn {
-    to { opacity: 1; transform: scale(1); }
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px) scale(0.7) rotate(10deg) translateY(100px);
+    }
+    60% {
+        opacity: 1;
+        filter: blur(0);
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px) scale(1.1) rotate(-5deg) translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px) scale(1) rotate(0deg) translateY(0);
+    }
 }
+
 
 /* Estilos del menú desplegable */
 .dropdown-content {
     transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
+
 
 /*Finalizacion del codigo de la galeria 3D*/
 /* 📌 Contenedor de video */
