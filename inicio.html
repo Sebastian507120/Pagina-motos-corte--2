@@ -109,94 +109,100 @@
     <div class="header-bar"></div>
 
     <!-- Sección de descripción -->
-<div class="select">
-    <section class="descripcion">
-        <!-- Imagen izquierda -->
-        <img src="img/foto-moto-izquierda.jpg" alt="Imagen izquierda" class="desc-img">
-        <!-- Texto de descripción -->
-        <div class="descripcion-texto">
-            <h2 id="descripcion-titulo">Bienvenido</h2>
-            <p id="descripcion-texto">
-                Descubre el mundo de las motocicletas con nuestras reseñas, comparativas y análisis expertos de los mejores modelos, como la TVS GUIÑO GUIÑO . Encuentra la moto ideal para ti y únete a nuestra comunidad para disfrutar de emocionantes rutas dominicales , donde la pasión por las dos ruedas nos une. ¡Es hora de vivir la aventura! 🏍️💨
-            </p>
-            <!-- Botón de exploración -->
-            <a href="#" class="btn-explore" id="inscribirse-btn"><i class="fas fa-motorcycle"></i> Inscribirse</a>
-        </div>
-        <!-- Imagen derecha -->
-        <img src="img/foto-moto-derecha.jpg" alt="Imagen derecha" class="desc-img">
-    </section>
-</div>
+    <div class="select">
+        <section class="descripcion">
+            <!-- Imagen izquierda -->
+            <img src="img/foto-moto-izquierda.jpg" alt="Imagen izquierda" class="desc-img">
+            <!-- Texto de descripción -->
+            <div class="descripcion-texto">
+                <h2 id="descripcion-titulo">Bienvenido</h2>
+                <p id="descripcion-texto">
+                    Descubre el mundo de las motocicletas con nuestras reseñas, comparativas y análisis expertos de los
+                    mejores modelos, como la TVS GUIÑO GUIÑO . Encuentra la moto ideal para ti y únete a nuestra
+                    comunidad para disfrutar de emocionantes rutas dominicales , donde la pasión por las dos ruedas nos
+                    une. ¡Es hora de vivir la aventura! 🏍️💨
+                </p>
+                <!-- Botón de exploración -->
+                <a href="#" class="btn-explore" id="inscribirse-btn"><i class="fas fa-motorcycle"></i> Inscribirse</a>
+            </div>
+            <!-- Imagen derecha -->
+            <img src="img/foto-moto-derecha.jpg" alt="Imagen derecha" class="desc-img">
+        </section>
+    </div>
 
-<!-- Formulario modal (fuera del flujo normal) -->
-<div id="formulario-modal" class="formulario-modal">
-    <div class="modal-contenido">
-        <span class="cerrar-modal">&times;</span>
-        <div class="left-panel">
-            <div class="overlay"></div>
-            <h2>Salida a San Gil</h2>
-        </div>
-        <div class="right-panel"> 
-            <h1>Salida a San Gil</h1>
-            <div class="hora">Hora de salida: 8:00 AM</div>
-            <div class="fecha">Fecha de salida: 20/03/2025</div>
-            <form action="https://formsubmit.co/jdiaz52@udi.edu.co" method="POST">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required oninput="validarNombre()">
-                <small id="nombreError" class="error-message">El nombre no debe contener números.</small>
+    <!-- Formulario modal (fuera del flujo normal) -->
+    <div id="formulario-modal" class="formulario-modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <div class="left-panel">
+                <div class="overlay"></div>
+                <h2>Salida a San Gil</h2>
+            </div>
+            <div class="right-panel">
+                <h1>Salida a San Gil</h1>
+                <div class="hora">Hora de salida: 8:00 AM</div>
+                <div class="fecha">Fecha de salida: 20/03/2025</div>
+                <form action="https://formsubmit.co/jdiaz52@udi.edu.co" method="POST">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required oninput="validarNombre()">
+                    <small id="nombreError" class="error-message">El nombre no debe contener números.</small>
 
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required
-                    oninput="validarTelefono('telefono', 'telefonoError')">
-                <small id="telefonoError" class="error-message">El teléfono debe tener exactamente 10 dígitos y solo números.</small>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required
+                        oninput="validarTelefono('telefono', 'telefonoError')">
+                    <small id="telefonoError" class="error-message">El teléfono debe tener exactamente 10 dígitos y solo
+                        números.</small>
 
-                <label for="sangre">Tipo de Sangre:</label>
-                <input type="text" id="sangre" name="sangre" required>
+                    <label for="sangre">Tipo de Sangre:</label>
+                    <input type="text" id="sangre" name="sangre" required>
 
-                <label for="moto">Moto:</label>
-                <input type="text" id="moto" name="moto" required>
+                    <label for="moto">Moto:</label>
+                    <input type="text" id="moto" name="moto" required>
 
-                <label for="experiencia">Nivel de Experiencia:</label>
-                <select id="experiencia" name="experiencia" required>
-                    <option value="">Seleccione una opción</option>
-                    <option value="baja">Baja</option>
-                    <option value="media">Media</option>
-                    <option value="alta">Alta</option>
-                </select>
+                    <label for="experiencia">Nivel de Experiencia:</label>
+                    <select id="experiencia" name="experiencia" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="baja">Baja</option>
+                        <option value="media">Media</option>
+                        <option value="alta">Alta</option>
+                    </select>
 
-                <label for="emergencia">Contacto de Emergencia:</label>
-                <input type="tel" id="emergencia" name="emergencia" required
-                    oninput="validarTelefono('emergencia', 'emergenciaError')">
-                <small id="emergenciaError" class="error-message">El teléfono debe tener exactamente 10 dígitos y solo números.</small>
+                    <label for="emergencia">Contacto de Emergencia:</label>
+                    <input type="tel" id="emergencia" name="emergencia" required
+                        oninput="validarTelefono('emergencia', 'emergenciaError')">
+                    <small id="emergenciaError" class="error-message">El teléfono debe tener exactamente 10 dígitos y
+                        solo números.</small>
 
-                <button type="submit" class="submit-btn">Enviar</button>
-            </form>
+                    <button type="submit" class="submit-btn">Enviar</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 
-    
+
     <!-- Barra separadora -->
     <div class="header-bar"></div>
 
     <!-- Galería de imágenes deslizantes -->
     <div>
         <!-- Menú desplegable -->
-    <div class="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">
-        <button class="dropbtn">Seleccionar Segmento</button>
-        <div class="dropdown-content">
-            <a href="#" data-segment="cafe_racer">Cafe Racer</a>
-            <a href="#" data-segment="deportivas">Deportivas</a>
-            <a href="#" data-segment="adventure">Adventure</a>
-            <a href="#" data-segment="enduro">Enduro</a>
-            <a href="#" data-segment="naked">Naked</a>
+        <div class="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">
+            <button class="dropbtn">Seleccionar Segmento</button>
+            <div class="dropdown-content">
+                <a href="#" data-segment="cafe_racer">Cafe Racer</a>
+                <a href="#" data-segment="deportivas">Deportivas</a>
+                <a href="#" data-segment="adventure">Adventure</a>
+                <a href="#" data-segment="enduro">Enduro</a>
+                <a href="#" data-segment="naked">Naked</a>
+            </div>
         </div>
-    </div>
         <div class="banner">
             <div id="slider" class="slider" style="--quantity: 10">
                 <!-- Imágenes de la galería -->
                 <div class="item" style="--position: 1"><img src="img/BMW R 1250 GS.jpeg" alt="BMW R 1250 GS"></div>
-                <div class="item" style="--position: 2"><img src="img/Ducati-deportiva.jpeg" alt="Ducati Deportiva"></div>
+                <div class="item" style="--position: 2"><img src="img/Ducati-deportiva.jpeg" alt="Ducati Deportiva">
+                </div>
                 <div class="item" style="--position: 3"><img src="img/Gato-moto.jpeg" alt="Gato en moto"></div>
                 <div class="item" style="--position: 4"><img src="img/Kawasaki zh2.jpeg" alt="Kawasaki ZH2"></div>
                 <div class="item" style="--position: 5"><img src="img/triumph 2.0.jpeg" alt="Triumph"></div>
@@ -213,7 +219,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <!-- Sección de comparativa de motos -->
     <div id="comparativa" class="moto-container">
@@ -223,6 +229,9 @@
             <label id="motom" for="marca-moto1">Marca de la moto:</label>
             <select id="marca-moto1">
                 <option value="">Seleccione una marca</option>
+                <option value="CAQM">5 A 15COP</option>
+                <option value="QATM">15 A 30COP</option>
+                <option value="TADL">30COP+</option>
                 <option value="Honda">Honda</option>
                 <option value="Yamaha">Yamaha</option>
                 <option value="Kawasaki">Kawasaki</option>
@@ -253,6 +262,9 @@
             <label id="motom" for="marca-moto2">Marca de la moto:</label>
             <select id="marca-moto2">
                 <option value="">Seleccione una marca</option>
+                <option value="CAQM">5 A 15COP</option>
+                <option value="QATM">15 A 30COP</option>
+                <option value="TADL">30COP+</option>
                 <option value="Honda">Honda</option>
                 <option value="Yamaha">Yamaha</option>
                 <option value="Kawasaki">Kawasaki</option>

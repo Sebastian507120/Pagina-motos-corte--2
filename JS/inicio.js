@@ -66,21 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Objeto con las imágenes de cada segmento
     const segmentImages = {
-        cafe_racer: Array.from({length: 10}, (_, i) => `img/Segmentos/cafe_racer_${i+1}.jpg`),
-        deportivas: Array.from({length: 10}, (_, i) => `img/Segmentos/deportivas_${i+1}.jpg`),
-        adventure: Array.from({length: 10}, (_, i) => `img/Segmentos/adventure_${i+1}.jpg`),
-        enduro: Array.from({length: 10}, (_, i) => `img/Segmentos/enduro_${i+1}.jpg`),
-        naked: Array.from({length: 10}, (_, i) => `img/Segmentos/naked_${i+1}.jpg`)
+        cafe_racer: Array.from({ length: 10 }, (_, i) => `img/Segmentos/cafe_racer_${i + 1}.jpg`),
+        deportivas: Array.from({ length: 10 }, (_, i) => `img/Segmentos/deportivas_${i + 1}.jpg`),
+        adventure: Array.from({ length: 10 }, (_, i) => `img/Segmentos/adventure_${i + 1}.jpg`),
+        enduro: Array.from({ length: 10 }, (_, i) => `img/Segmentos/enduro_${i + 1}.jpg`),
+        naked: Array.from({ length: 10 }, (_, i) => `img/Segmentos/naked_${i + 1}.jpg`)
     };
 
     // Función para crear la galería con transiciones mejoradas
     function createGallery(segment) {
         console.log(`Cargando segmento: ${segment}`);
-        
+
         // 1. Pausar animación y preparar transición de salida
         slider.style.animationPlayState = 'paused';
         const currentItems = Array.from(slider.querySelectorAll('.item'));
-        
+
         // Aplicar fade-out solo si hay elementos existentes
         if (currentItems.length > 0) {
             currentItems.forEach(item => {
@@ -98,27 +98,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function loadNewImages() {
             slider.innerHTML = '';
-            
+
             const images = segmentImages[segment];
             if (!images) {
                 console.error(`Segmento no encontrado: ${segment}`);
                 return;
             }
-            
+
             const quantity = images.length;
             slider.style.setProperty('--quantity', quantity);
-            
+
             // 3. Crear nuevos items con animación de entrada
             images.forEach((imgSrc, index) => {
                 const item = document.createElement('div');
                 item.className = 'item fade-in';
                 item.style.setProperty('--position', index + 1);
-                
+
                 const img = document.createElement('img');
                 img.src = imgSrc;
                 img.alt = `${segment.replace('_', ' ')} ${index + 1}`;
                 img.onerror = () => console.error(`Error al cargar: ${imgSrc}`);
-                
+
                 item.appendChild(img);
                 slider.appendChild(item);
             });
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento para los links del menú (selección de segmentos)
     dropdownLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             const segment = this.getAttribute('data-segment');
@@ -159,10 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Evento para el botón principal (abrir/cerrar menú)
-    document.querySelector('.dropbtn').addEventListener('click', function(e) {
+    document.querySelector('.dropbtn').addEventListener('click', function (e) {
         e.stopPropagation();
         const dropdownContent = this.nextElementSibling;
-        
+
         if (dropdownContent.style.display === 'block') {
             closeDropdown();
         } else {
@@ -175,14 +175,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Cerrar menú al hacer clic fuera de él
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!e.target.closest('.dropdown')) {
             closeDropdown();
         }
     });
 
     // Evitar que se cierre al hacer clic dentro del menú
-    document.querySelector('.dropdown-content').addEventListener('click', function(e) {
+    document.querySelector('.dropdown-content').addEventListener('click', function (e) {
         e.stopPropagation();
     });
 
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createGallery('cafe_racer');
 
     // Evento para pausar/despausar la animación
-    slider.addEventListener("click", function(e) {
+    slider.addEventListener("click", function (e) {
         e.stopPropagation();
         const currentState = window.getComputedStyle(slider).animationPlayState;
         slider.style.animationPlayState = currentState === "running" ? "paused" : "running";
@@ -236,6 +236,41 @@ function showSlider(type) {
 
 // 📌 Librería de motos para la comparativa
 const motos = {
+    CAQM: {
+        "PCX 125": { Cilindrada: "124cc", Potencia: "11 cv", Tipo: "Scooter", uso: "Diario", peso: "133kg", Imagen: "img/motos/PCX125.PNG", precio: "15’000,000 COP" },
+        "Apache RTR 200 4V": { Cilindrada: "197.75cc", Potencia: "20.5cv", Tipo: "Deportiva", Uso: "Diseñada para velocidad", Peso: "148kg", Imagen: "img/motos/apache200.png", precio: "15’000,000 COP" },
+        "GIXXER150": { Cilindrada: "155cc", Potencia: "14cv", Tipo: "naked", Uso: "Diario", peso: "140kg", Imagen: "img/motos/Gixxer150.png", precio: "12’500,000 COP" },
+        "KLX125": { Cilindrada: "125cc", Potencia: "10cv", Tipo: "Enduro", Uso: "Campo", peso: "113kg", Imagen: "img/motos/klx125.png", precio: "12’000,000 COP" },
+        "Apache RTR 200 4V": { Cilindrada: "197.75cc", Potencia: "20.5cv", Tipo: "Deportiva", Uso: "Diseñada para velocidad", Peso: "148kg", Imagen: "img/motos/apache200.png", precio: "15’000,000 COP" },
+        "TVS Raider 125": { Cilindrada: "124.8cc", Potencia: "11cv", Tipo: "Naked", Uso: "Urbana", Peso: "123kg", Imagen: "img/motos/raider125.png", precio: "10’000,000 COP" },
+        "TVS Star City Plus": { Cilindrada: "109.7cc", Potencia: "8.4cv", Tipo: "naked", Uso: "Uso diario", Peso: "115kg", Imagen: "img/motos/starcity.png", precio: "9’500,000 COP" },
+        "TVS XL100": { Cilindrada: "99.7cc", Potencia: "4.3cv", Tipo: "naked", Uso: "Trabajo pesado", Peso: "89kg", Imagen: "img/motos/xl100.png", precio: "8’000,000 COP" },
+    },
+    QATM: {
+        "N-MAX": { Cilindrada: "150CC", Potencia: "12CV", Tipo: "Scooter", Uso: "Diario", peso: "127kg", Imagen: "img/motos/N-MAX.png", precio: "16’000,000 COP" },
+        "Apache RR 310": { Cilindrada: "312cc", Potencia: "34cv", Tipo: "Deportiva", Uso: "Diseñada para velocidad", Peso: "174kg", Imagen: "img/motos/apache310.png", precio: "30’000,000 COP" },
+        "ER6N": { Cilindrada: "649cc", Potencia: "72cv", Tipo: "Deportiva", Uso: "Diseñada para velocidad", peso: "204kg", Imagen: "img/motos/ER6N.png", precio: "20’000,000 COP" },
+        "Z650": { Cilindrada: "649cc", Potencia: "68cv", Tipo: "naked", Uso: "Diseñada para velocidad", peso: "187kg", Imagen: "img/motos/Z650.png", precio: "30’000,000 COP" },
+        "X-CITY250": { Cilindrada: "250cc", Potencia: "21CV", Tipo: "Scooter", Uso: "Diario", peso: "165kg", Imagen: "img/motos/X-City_250.png", precio: "25’000,000 COP" },
+    },
+    TADL: {
+        "CBR600RR": { Cilindrada: "600cc", Potencia: "120cv", Tipo: "Deportiva", uso: "Diseñada para velocidad", Peso: "186kg", Imagen: "img/motos/CBR600RR.png", precio: "75’000,000 COP" },
+        "CRF450R": { Cilindrada: "450cc", Potencia: "52cv", Tipo: "Motocroos", uso: "Diseñada para velocidad", Peso: "190KG", Imagen: "img/motos/CRF450R.png", precio: "55’000,000 COP" },
+        "CB1000R": { Cilindrada: "998cc", potencia: "143cv", Tipo: "Naked", uso: "Diseñada para velocidad", peso: "212kg", Imagen: "img/motos/CB1000R.png", precio: "80’000,000 COP" },
+        "CRF1100L": { Cilindrada: "1084cc", potencia: "100cv", Tipo: "Enduro", uso: "Diseñada para velocidad", Peso: "231kg", Imagen: "img/motos/CRF1100L.png", precio: "110’000,000 COP" },
+        "YZF-R6": { Cilindrada: "599", Potencia: "129CV", Tipo: "Deportiva", uso: "Diseñada para la velocidad", peso: "189kg", Imagen: "img/motos/R6.png", precio: "85’000,000 COP" },
+        "MT-10SP": { Cilindrada: "998cc", Potencia: "165CV", Tipo: "naked", Uso: "Diseñada para velocidad", peso: "212kg", Imagen: "img/motos/MT10SP.png", precio: "90’000,000 COP" },
+        "H2R": { Cilindrada: "998cc", Potencia: "310cv", Tipo: "Deportiva", Uso: "Diseñada para velocidad", peso: "216kg", Imagen: "img/motos/ZH2.png", precio: "550’000,000 COP" },
+        "ZZR1400": { Cilindrada: "1441cc", Potencia: "200cv", Tipo: "Deportiva", Uso: "Diseñada para velocidad", peso: "268kg", Imagen: "img/motos/ZZR1400.png", precio: "100’000,000 COP" },
+        "VStrom650": { Cilindrada: "645cc", Potencia: "67cv", Tipo: "Enduro", Uso: "Diseñada para velocidad", peso: "214kg", Imagen: "img/motos/V-STROM650.png", precio: "55’000,000 COP" },
+        "GSXR1000": { Cilindrada: "999cc", Potencia: "202cv", Tipo: "Deportiva", Uso: "Diseñada para velocidad", peso: "205kg", Imagen: "img/motos/GSXR1000.png", precio: "150’000,000 COP" },
+        "Burgman400": { Cilindrada: "400cc", Potencia: "29cv", Tipo: "Scooter", Uso: "Diario", peso: "218kg", Imagen: "img/motos/burgman400.png", precio: "42’000,000 COP" },
+        "R18Classic": { Cilindrada: "1802cc", Potencia: "91cv", Tipo: "Custom", Uso: "Lampariar", peso: "345kg", Imagen: "img/motos/BMW_R18.png", precio: "180’000,000 COP" },
+        "C400GT": { Cilindrada: "350cc", Potencia: "34cv", Tipo: "Scooter", Uso: "Diario", peso: "204kg", Imagen: "img/motos/C400.PNG", precio: "60’000,000 COP" },
+        "S1000XR": { Cilindrada: "999cc", Potencia: "165cv", Tipo: "Touring", Uso: "Viaje", peso: "226kg", Imagen: "img/motos/s1000r.png", precio: "160’000,000 COP" },
+        "F900GSAdventure": { Cilindrada: "895cc", Potencia: "105cv", Tipo: "Enduro", Uso: "Viaje", peso: "246kg", Imagen: "img/motos/F900GS.png", precio: "110’000,000 COP" },
+        "K1600B": { Cilindrada: "1649cc", Potencia: "160cv", Tipo: "Touring", Uso: "Viaje", peso: "334kg", Imagen: "img/motos/K1600B.png ", precio: "240’000,000 COP " }
+    },
     Honda: {
         "CBR600RR": { Cilindrada: "600cc", Potencia: "120cv", Tipo: "Deportiva", uso: "Diseñada para velocidad", Peso: "186kg", Imagen: "img/motos/CBR600RR.png" },
         "CRF450R": { Cilindrada: "450cc", Potencia: "52cv", Tipo: "Motocroos", uso: "Diseñada para velocidad", Peso: "190KG", Imagen: "img/motos/CRF450R.png" },
@@ -390,19 +425,19 @@ document.querySelector('form').addEventListener('submit', function (event) {
 //DESDE AQUI HACIA ABAJO
 
 // Control del modal
-document.getElementById('inscribirse-btn').addEventListener('click', function(e) {
+document.getElementById('inscribirse-btn').addEventListener('click', function (e) {
     e.preventDefault();
     document.getElementById('formulario-modal').style.display = 'flex';
     document.body.style.overflow = 'hidden'; // Evita el scroll del body
 });
 
-document.querySelector('.cerrar-modal').addEventListener('click', function() {
+document.querySelector('.cerrar-modal').addEventListener('click', function () {
     document.getElementById('formulario-modal').style.display = 'none';
     document.body.style.overflow = 'auto';
 });
 
 // Cerrar al hacer clic fuera del contenido
-document.getElementById('formulario-modal').addEventListener('click', function(e) {
+document.getElementById('formulario-modal').addEventListener('click', function (e) {
     if (e.target === this) {
         document.getElementById('formulario-modal').style.display = 'none';
         document.body.style.overflow = 'auto';
